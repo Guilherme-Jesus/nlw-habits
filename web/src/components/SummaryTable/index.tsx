@@ -1,7 +1,9 @@
+import generateDaysFromYearBegin from "../../utils/generate-days-from-year-begin";
 import HabitDay from "../Habit/HabitDay";
 
 const weekDays = ["D", "S", "T", "Q", "Q", "S", "S"];
-
+const summaryDates = generateDaysFromYearBegin();
+console.log(summaryDates);
 export function SummaryTable() {
    return (
       <div className="w-full flex">
@@ -16,12 +18,9 @@ export function SummaryTable() {
             ))}
          </div>
          <div className="grid grid-rows-7 grid-flow-col gap-3">
-            <HabitDay />
-            <HabitDay />
-            <HabitDay />
-            <HabitDay />
-            <HabitDay />
-
+            {summaryDates.map((date) => {
+               return <HabitDay key={date.toString()} />;
+            })}
          </div>
       </div>
    );
